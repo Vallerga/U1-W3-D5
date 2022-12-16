@@ -12,40 +12,91 @@ REGOLE
 /* ESERCIZIO A
   Crea una variabile chiamata "sum" e assegnaci il risultato della somma tra i valori 10 e 20.
 */
-
+console.log("ESERCIZIO A\n");
+let sum = 10 + 20;
+console.log("sum è:", sum);
 /* ESERCIZIO B
   Crea una variabile chiamata "random" e assegnaci un numero casuale tra 0 e 20 (deve essere generato dinamicamente a ogni esecuzione).
 */
 
+console.log("\nESERCIZIO B\n");
+let random = Math.floor(Math.random() * 21);
+console.log("random è: ", random);
+
 /* ESERCIZIO C
   Crea una variabile chiamata "me" e assegnaci un oggetto contenente le seguenti proprietà: name = il tuo nome, surname = il tuo cognome, age = la tua età.
 */
+console.log("\nESERCIZIO C\n");
+const me = {
+  name: "Antonio",
+  surname: "Vallerga",
+  age: 37,
+};
+console.log("L'oggetto me è: ", me);
 
 /* ESERCIZIO D
   Crea del codice per rimuovere programmaticamente la proprietà "age" dall'oggetto precedentemente creato.
 */
 
+console.log("\nESERCIZIO D\n");
+delete me.age;
+console.log("L'oggetto me è: ", me);
+
 /* ESERCIZIO E
   Crea del codice per aggiungere programmaticamente all'oggetto precedentemente creato un array chiamato "skills", contenente i linguaggi di programmazione che conosci.
 */
+console.log("\nESERCIZIO E\n");
+me.skills = ["javascript"];
+console.log("L'oggetto me è: ", me);
 
 /* ESERCIZIO F
   Crea un pezzo di codice per aggiungere un nuovo elemento all'array "skills" contenuto nell'oggetto "me".
 */
 
+console.log("\nESERCIZIO F\n");
+me.skills.push("C");
+console.log("L'oggetto me è: ", me);
+
 /* ESERCIZIO G
   Crea un pezzo di codice per rimuovere programmaticamente l'ultimo elemento dall'array "skills" contenuto nell'oggetto "me".
 */
+
+console.log("\nESERCIZIO G\n");
+me.skills.pop();
+console.log("L'oggetto me è: ", me);
 
 // Funzioni
 
 /* ESERCIZIO 1
   Crea una funzione chiamata "dice": deve generare un numero casuale tra 1 e 6.
 */
+console.log("\n\n\nESERCIZIO 1\n");
+const dice = () => {
+  let roll = Math.floor(Math.random() * 6 + 1);
+  return roll;
+};
+console.log("la spada fa danno: ", dice());
 
 /* ESERCIZIO 2
   Crea una funzione chiamata "whoIsBigger" che riceve due numeri come parametri e ritorna il maggiore dei due.
 */
+
+console.log("\nESERCIZIO 2\n");
+let num1 = 10;
+let num2 = 20;
+const whoIsBigger = (param1, param2) => {
+  if (param1 > param2) {
+    let largest = param1;
+    return largest;
+  } else if (param2 > param1) {
+    let largest = param2;
+    return largest;
+  } else {
+    console.log("sei sicuro di cosa stai facendo volodymyr?");
+    return 1;
+  }
+};
+console.log("Il numero più grande è: ", whoIsBigger(num1, num2));
 
 /* ESERCIZIO 3
   Crea una funzione chiamata "splitMe" che riceve una stringa come parametro e ritorna un'array contenente ogni parola della stringa.
@@ -53,16 +104,49 @@ REGOLE
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
 
+console.log("\nESERCIZIO 3\n");
+let stringa = "Epicode fa corsi di frontend";
+const splitMe = function (par) {
+  let arr = par.split(" ");
+  return arr;
+};
+console.log("la stringa scomposta è: ", splitMe(stringa));
+
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
 */
+
+console.log("\nESERCIZIO 4\n");
+let stringa1 = "Antonio";
+let booleano = true;
+let deleteOne = (param, bool) => {
+  let result;
+  if (bool === true) {
+    result = param.slice(1);
+    return result;
+  } else if (bool === false) {
+    result = param.slice(0, param.length - 1);
+    return result;
+  }
+};
+console.log("senza la prima lettera: ", stringa1.slice(1));
+console.log("senza la l'ultima lettera: ", stringa1.slice(0, stringa1.length - 1));
+console.log("la stringa modificata è", deleteOne(stringa1, booleano));
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
 
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
+
+console.log("\nESERCIZIO 5\n");
+let stringa2 = "siamo 4 ma il 1 ci supera di 2 posizioni";
+let onlyLetters = (param) => {
+  result = param.replace(/[0-9]?/g,'');
+  return result;
+};
+console.log(onlyLetters(stringa2));
 
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
@@ -83,7 +167,29 @@ REGOLE
       sum: 10
       values: [3, 3, 4]
   }
-*/
+funzione rollTheDices riceve un parametro
+chiama la funzione dice il numero di volte del parametro
+produce un oggetto con 2 proprieta
+proprietà sum è la somma dei valori estratti
+proprietà values con array con tutti i valori di dice() prodotti*/
+
+console.log("\nESERCIZIO 8\n");
+const rollTheDices = function (diceNumber) {
+  let resultDice = []
+  for (i = 0 ; i < diceNumber; i++) {
+    resultDice[i] = dice();
+  }
+  let sumDice = resultDice.reduce((acc,val) => acc += val);
+  const diceResult = {
+    sum: 0,
+    values: []
+  }
+  diceResult.sum = sumDice;
+  diceResult.values = resultDice;
+  return diceResult;
+}
+numberOfDiceUsed = 6;
+console.log (rollTheDices(numberOfDiceUsed));
 
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
@@ -199,116 +305,111 @@ REGOLE
 
 const movies = [
   {
-    Title: 'The Lord of the Rings: The Fellowship of the Ring',
-    Year: '2001',
-    imdbID: 'tt0120737',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Fellowship of the Ring",
+    Year: "2001",
+    imdbID: "tt0120737",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
   },
 
   {
-    Title: 'The Lord of the Rings: The Return of the King',
-    Year: '2003',
-    imdbID: 'tt0167260',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Return of the King",
+    Year: "2003",
+    imdbID: "tt0167260",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lord of the Rings: The Two Towers',
-    Year: '2002',
-    imdbID: 'tt0167261',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Two Towers",
+    Year: "2002",
+    imdbID: "tt0167261",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of War',
-    Year: '2005',
-    imdbID: 'tt0399295',
-    Type: 'movie',
+    Title: "Lord of War",
+    Year: "2005",
+    imdbID: "tt0399295",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
-    Title: 'Lords of Dogtown',
-    Year: '2005',
-    imdbID: 'tt0355702',
-    Type: 'movie',
+    Title: "Lords of Dogtown",
+    Year: "2005",
+    imdbID: "tt0355702",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lord of the Rings',
-    Year: '1978',
-    imdbID: 'tt0077869',
-    Type: 'movie',
+    Title: "The Lord of the Rings",
+    Year: "1978",
+    imdbID: "tt0077869",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of the Flies',
-    Year: '1990',
-    imdbID: 'tt0100054',
-    Type: 'movie',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg',
+    Title: "Lord of the Flies",
+    Year: "1990",
+    imdbID: "tt0100054",
+    Type: "movie",
+    Poster: "https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lords of Salem',
-    Year: '2012',
-    imdbID: 'tt1731697',
-    Type: 'movie',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg',
+    Title: "The Lords of Salem",
+    Year: "2012",
+    imdbID: "tt1731697",
+    Type: "movie",
+    Poster: "https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg",
   },
   {
-    Title: 'Greystoke: The Legend of Tarzan, Lord of the Apes',
-    Year: '1984',
-    imdbID: 'tt0087365',
-    Type: 'movie',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg',
+    Title: "Greystoke: The Legend of Tarzan, Lord of the Apes",
+    Year: "1984",
+    imdbID: "tt0087365",
+    Type: "movie",
+    Poster: "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of the Flies',
-    Year: '1963',
-    imdbID: 'tt0057261',
-    Type: 'movie',
+    Title: "Lord of the Flies",
+    Year: "1963",
+    imdbID: "tt0057261",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg",
   },
   {
-    Title: 'The Avengers',
-    Year: '2012',
-    imdbID: 'tt0848228',
-    Type: 'movie',
+    Title: "The Avengers",
+    Year: "2012",
+    imdbID: "tt0848228",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Infinity War',
-    Year: '2018',
-    imdbID: 'tt4154756',
-    Type: 'movie',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg',
+    Title: "Avengers: Infinity War",
+    Year: "2018",
+    imdbID: "tt4154756",
+    Type: "movie",
+    Poster: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Age of Ultron',
-    Year: '2015',
-    imdbID: 'tt2395427',
-    Type: 'movie',
+    Title: "Avengers: Age of Ultron",
+    Year: "2015",
+    imdbID: "tt2395427",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Endgame',
-    Year: '2019',
-    imdbID: 'tt4154796',
-    Type: 'movie',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg',
+    Title: "Avengers: Endgame",
+    Year: "2019",
+    imdbID: "tt4154796",
+    Type: "movie",
+    Poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
-]
+];
