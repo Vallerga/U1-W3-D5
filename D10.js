@@ -12,7 +12,7 @@ REGOLE
 /* ESERCIZIO A
   Crea una variabile chiamata "sum" e assegnaci il risultato della somma tra i valori 10 e 20.
 */
-console.log("ESERCIZIO A\n");
+console.log("\nESERCIZIO A\n");
 let sum = 10 + 20;
 console.log("sum è:", sum);
 /* ESERCIZIO B
@@ -70,7 +70,7 @@ console.log("L'oggetto me è: ", me);
 /* ESERCIZIO 1
   Crea una funzione chiamata "dice": deve generare un numero casuale tra 1 e 6.
 */
-console.log("\n\n\nESERCIZIO 1\n");
+console.log("\n\nESERCIZIO 1\n");
 const dice = () => {
   let roll = Math.floor(Math.random() * 6 + 1);
   return roll;
@@ -555,7 +555,7 @@ const deleteLiItem = function () {
 
 const addClassNameTr = function () {
   const trArray = document.querySelectorAll("tr");
-  trArray.forEach((element) => element.className = "test");
+  trArray.forEach((element) => (element.className = "test"));
   trArray.forEach((element) => (element.style.background = "red"));
 };
 
@@ -598,23 +598,39 @@ for (i = 0; i <= treeHeight; i++) {
 
 */
 
-// console.log("\nESERCIZIO 28\n");
-num = 6;
-x = [];
+console.log("\nESERCIZIO 28\n");
+spaceArr = ' ';
+let fulltreeHeight = 6;
+let numberSpace = fulltreeHeight;
+let fullfreeArr = [];
 
-for (i = 0; i <= num; i++) {
-  x[i] = "";
-}
-
-for (i = num; i <= 0; i--) {
-  x[Math.abs(i)] = "";
-  y = x.join("*");
-  // console.log(y);
+for (i = 0; i <= fulltreeHeight; i++) {
+  incrementalSpace = spaceArr.repeat(numberSpace);
+  numberSpace--
+  fullfreeArr[i] = "*";
+  tree = fullfreeArr.join("*");
+  console.log(incrementalSpace,tree);
 }
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+
+console.log("\nESERCIZIO 29\n");
+let arrayDimension = [-3/*start*/, 50/*end*/];
+let arrayGenerated = [];
+for (i = arrayDimension[0]; i <= arrayDimension[1]; i++) {
+  arrayGenerated[i] = i;
+}
+const isItPrime = (num) => {
+  for (let i = 2; num > i; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return num > 1;
+}
+console.log(`I numeri primi del nostro array sono: ${arrayGenerated.filter(isItPrime)}`); // [2, 3, 5, 7, 11, 13]
 
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
 
